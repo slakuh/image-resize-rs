@@ -12,7 +12,6 @@ use img_2::{self, Resize};
 pub struct Arguments {
     pub width: u32,
     pub height: u32,
-    // pub image_size: img::ImgSize,
     pub filter: image::FilterType,
     paths: Vec<PathBuf>,
     pub image_format: ImageFormat,
@@ -29,7 +28,7 @@ impl Arguments {
             paths: Vec::new(),
             image_format: ImageFormat::JPEG,
             resize: Resize::Decrease,
-            max_parallel_img: constants::MAX_PARALLEL_IMG, // thread_num(),
+            max_parallel_img: constants::MAX_PARALLEL_IMG, 
         };
 
         for argument in env::args().skip(1) {
