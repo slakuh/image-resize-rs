@@ -40,14 +40,14 @@ impl Arguments {
                     let str_vec: Vec<&str> = argument.split(':').collect();
 
                     match str_vec[0] {
-                        "-h" => arg.height = str_vec[1].parse::<u32>().unwrap(),// arg_to_u32(str_vec[1]),
-                        "-w" => arg.width = str_vec[1].parse::<u32>().unwrap(),//arg_to_u32(str_vec[1]),
+                        "-h" => arg.height = str_vec[1].parse::<u32>().unwrap(),
+                        "-w" => arg.width = str_vec[1].parse::<u32>().unwrap(),
                         "-help" => println!("{}", help::help()),
                         "-f" => arg.filter = filter(str_vec[1]),
                         "-if" => arg.image_format = image_format(str_vec[1]),
                         "-r" => arg.resize = resize_type(str_vec[1]),
                         "-about" => help::about(),
-                        "-mpi" => arg.max_parallel_img = str_vec[1].parse::<usize>().unwrap(),//arg_to_u32(str_vec[1]),
+                        "-mpi" => arg.max_parallel_img = str_vec[1].parse::<usize>().unwrap(),
                         _ => println!("Unsupported argument: {}", argument),
                     }
                     continue;
