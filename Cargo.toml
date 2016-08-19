@@ -1,0 +1,13 @@
+[package]
+name = "img-rsz"
+version = "0.1.0"
+authors = ["kuhin"]
+
+[dependencies]
+image = "0.10.1"
+
+[dependencies.user]
+path = "../user"
+
+[profile.release]
+lto = true
