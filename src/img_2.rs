@@ -11,14 +11,14 @@ use args_pars::Arguments;
 
 #[derive(Copy, Clone)]
 pub enum Resize {
-    // samo će povećati sliku
+    // samo će povečati sliku
     Increase,
     // samo će smanjiti sliku
     Decrease,
-    // povećat ili umanjit sliku na ćeljenu velićinu
-    Eather,
-    // neće mijenjati velićinu slike
-    Neather,
+    // povećat ili umanjit sliku na ćeljenu veličinu
+    Either,
+    // neće mijenjati veličinu slike
+    Neither,
 }
 
 pub struct ImageSize {
@@ -58,8 +58,8 @@ impl ImageSize {
         match self.resize {
             Resize::Increase => calc_new_size = self.width < new_width,                
             Resize::Decrease => calc_new_size = self.width > new_width,
-            Resize::Eather => calc_new_size = true,
-            Resize::Neather => calc_new_size = false,
+            Resize::Either => calc_new_size = true,
+            Resize::Neither => calc_new_size = false,
         }
 
         if calc_new_size {
@@ -75,8 +75,8 @@ impl ImageSize {
         match self.resize {
             Resize::Increase => calc_new_size = self.height < new_height,
             Resize::Decrease => calc_new_size = self.height > new_height,
-            Resize::Eather => calc_new_size = true,    
-            Resize::Neather => calc_new_size = false,                   
+            Resize::Either => calc_new_size = true,    
+            Resize::Neither => calc_new_size = false,                   
         }
 
         if calc_new_size {
@@ -123,7 +123,7 @@ impl ImageSize {
             let out_path_buf = out_file_name(&self.path, self.image_format);
             let out_path = Path::new(out_path_buf.to_str().unwrap());
 
-            // kopirat će i preimenovati file ukoliko se velićina nije promjenila i extenzija je ostala ista
+            // kopirat će i preimenovati file ukoliko se veličina nije promjenila i extenzija je ostala ista
             if !is_size_changed &&
                image_format_to_string(self.image_format) == self.file_extension() {
                 let _ = fs::copy(self.path.clone(), out_path);
@@ -189,7 +189,7 @@ pub fn resize_images(mut args: Arguments) {
 }
 
 fn out_file_name(path: &Path, image_format: ImageFormat) -> PathBuf {
-    let name: &str = path.file_stem().unwrap().to_str().unwrap();// + suffiks + ".jpg";
+    let name: &str = path.file_stem().unwrap().to_str().unwrap();
 
     let out_name = String::from(name) + constants::FILE_NAME_SUFFIX + "." +
                    &image_format_to_string(image_format);

@@ -90,10 +90,10 @@ fn image_format(s: &str) -> ImageFormat {
 fn resize_type(s: &str) -> img_2::Resize {
     let resize: img_2::Resize;
     match s {
-        "0" => resize = Resize::Neather,
+        "0" => resize = Resize::Neither,
         "1" => resize = Resize::Decrease,
         "2" => resize = Resize::Increase,
-        "3" => resize = Resize::Eather,
+        "3" => resize = Resize::Either,
         _ => panic!("Unsupported argument: resize type."),
     }
 
