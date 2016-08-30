@@ -163,7 +163,6 @@ impl ImageSize {
 }
 
 pub fn resize_images(args: Arguments) {
-
     let paths = args.paths();
     paths.par_iter().for_each(|path| 
                         ImageSize::from(PathBuf::from(path.clone()), &args)
