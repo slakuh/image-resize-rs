@@ -102,7 +102,7 @@ impl ImageSize {
                 height_from_args = constants::OUTPUT_HEIGHT;
             }
 
-            // ovdje vrijesnost structa od argumenat mijenjam u velićinu slike
+            // ovdje se vrijednost structa od argumenat mijenja u veličinu slike
             self.width = img.dimensions().0;
             self.height = img.dimensions().1;
 
