@@ -3,6 +3,7 @@ name = "img-rsz"
 version = "0.1.0"
 dependencies = [
  "image 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rayon 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "user 0.1.0",
 ]
 
@@ -235,6 +236,16 @@ dependencies = [
 [[package]]
 name = "rayon"
 version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "deque 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "num_cpus 0.2.13 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rand 0.3.14 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "rayon"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "deque 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",

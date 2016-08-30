@@ -5,6 +5,7 @@ authors = ["kuhin"]
 
 [dependencies]
 image = "0.10.1"
+rayon = "0.4.0"
 
 [dependencies.user]
 path = "../user"
