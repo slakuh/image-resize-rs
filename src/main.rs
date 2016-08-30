@@ -2,7 +2,6 @@
 // #![allow(unused_variables)]
 
 extern crate image;
-extern crate rayon;
 extern crate user;
 
 mod args_pars;
