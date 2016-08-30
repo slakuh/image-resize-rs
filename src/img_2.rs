@@ -163,14 +163,11 @@ impl ImageSize {
 }
 
 pub fn resize_images(args: Arguments) {
-    //let mut threads = Vec::new();
-    //let mut i: usize = 0;
+
     let paths = args.paths();
-    //args.paths_clear();
     paths.par_iter().for_each(|path| 
                         ImageSize::from(PathBuf::from(path.clone()), &args)
-                        .resize_image()            
-        );
+                        .resize_image());
 }
 
 fn out_file_name(path: &Path, image_format: ImageFormat) -> PathBuf {
