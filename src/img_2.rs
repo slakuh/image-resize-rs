@@ -3,7 +3,6 @@ extern crate image;
 use constants;
 use image::{GenericImage, ImageFormat};
 use image::FilterType;
-use simple_parallel;
 // use std::io::{self, Write};
 use std::fs::{self, File};
 use std::path::{Path, PathBuf};
@@ -162,11 +161,32 @@ impl ImageSize {
     }
 }
 
-pub fn resize_images(args: Arguments) {
+pub fn resize_images(mut args: Arguments) {
+    let mut threads = Vec::new();
+    let mut i: usize = 0;
     let paths = args.paths();
-    simple_parallel::for_(paths, |path| {
-    ImageSize::from(PathBuf::from(path.clone()), &args)
-                        .resize_image()});
+    args.paths_clear();
+    for path in paths {
+        let arg = args.clone();
+        threads.push(thread::spawn(move || {
+            let mut is = ImageSize::from(path, &arg);
+            is.resize_image();
+        }));
+
+        // maximalan broj slika koje će se odjednom učitati i obraditi
+        i += 1;
+        if i % args.max_parallel_img == 0 {
+            for thread in threads {
+                thread.join().unwrap();
+            }
+            threads = Vec::new();
+        }
+    }
+
+    for thread in threads {
+        thread.join().unwrap();
+    }
+}
 
 fn out_file_name(path: &Path, image_format: ImageFormat) -> PathBuf {
     let name: &str = path.file_stem().unwrap().to_str().unwrap();
