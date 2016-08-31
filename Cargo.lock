@@ -3,6 +3,7 @@ name = "img-rsz"
 version = "0.1.0"
 dependencies = [
  "image 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "simple_parallel 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "user 0.1.0",
 ]
 
@@ -19,6 +20,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "color_quant"
 version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "crossbeam"
+version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -251,6 +257,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "serde"
 version = "0.7.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "simple_parallel"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "crossbeam 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "user"

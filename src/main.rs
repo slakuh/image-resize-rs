@@ -2,7 +2,9 @@
 // #![allow(unused_variables)]
 
 extern crate image;
+extern crate simple_parallel;
 extern crate user;
+
 
 mod args_pars;
 mod constants;
